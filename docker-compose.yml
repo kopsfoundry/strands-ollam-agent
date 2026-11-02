@@ -1,0 +1,11 @@
+services:
+  agent:
+    build: .
+    container_name: strands-ollama-agent
+    ports:
+      - "8000:8000"
+    environment:
+      OLLAMA_API_KEY: ${OLLAMA_API_KEY:?Set OLLAMA_API_KEY in .env}
+      OLLAMA_HOST: https://ollama.com
+      OLLAMA_MODEL: gemma4:31b
+    restart: unless-stopped
